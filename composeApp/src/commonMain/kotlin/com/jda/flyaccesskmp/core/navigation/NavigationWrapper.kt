@@ -1,5 +1,6 @@
 package com.jda.flyaccesskmp.core.navigation
 
+import CameraScreen
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -13,7 +14,7 @@ fun NavigationWrapper() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "Initial") {
         composable("Initial"){
-            InitialScreen(goToAccessScreen = { navController.navigate("Access") },
+            InitialScreen(goToAccessScreen = { navController.navigate("CameraScreen") },
                 goToRegisterScreen = { navController.navigate("Register") })
         }
         composable("Access") {
@@ -21,6 +22,9 @@ fun NavigationWrapper() {
         }
         composable("Register") {
             RegisterScreen { navController.popBackStack() }
+        }
+        composable("CameraScreen") {
+            CameraScreen()
         }
     }
 }
